@@ -27,8 +27,7 @@ use support::*;
 bridge_destroy!(ProtocolAddress, ffi = address);
 
 bridge_destroy!(PublicKey, ffi = publickey, jni = ECPublicKey);
-#[cfg(not(feature = "jni"))]
-bridge_deserialize!(PublicKey::deserialize, ffi = publickey);
+bridge_deserialize!(PublicKey::deserialize, ffi = publickey, jni = None);
 
 bridge_destroy!(PrivateKey, ffi = privatekey, jni = ECPrivateKey);
 bridge_deserialize!(
@@ -37,10 +36,8 @@ bridge_deserialize!(
     jni = ECPrivateKey
 );
 
-#[cfg(not(feature = "jni"))]
-bridge_destroy!(SessionRecord);
-#[cfg(not(feature = "jni"))]
-bridge_deserialize!(SessionRecord::deserialize);
+bridge_destroy!(SessionRecord, jni = None);
+bridge_deserialize!(SessionRecord::deserialize, jni = None);
 
 bridge_destroy!(Fingerprint, jni = NumericFingerprintGenerator);
 
@@ -69,8 +66,7 @@ bridge_destroy!(SenderKeyName);
 bridge_destroy!(SenderKeyRecord);
 bridge_deserialize!(SenderKeyRecord::deserialize);
 
-#[cfg(not(feature = "jni"))]
-bridge_destroy!(CiphertextMessage);
+bridge_destroy!(CiphertextMessage, jni = None);
 
 bridge_destroy!(ServerCertificate);
 bridge_deserialize!(ServerCertificate::deserialize);
@@ -81,7 +77,5 @@ bridge_deserialize!(SenderCertificate::deserialize);
 bridge_destroy!(UnidentifiedSenderMessageContent);
 bridge_deserialize!(UnidentifiedSenderMessageContent::deserialize);
 
-#[cfg(not(feature = "ffi"))]
-bridge_destroy!(UnidentifiedSenderMessage);
-#[cfg(not(feature = "ffi"))]
-bridge_deserialize!(UnidentifiedSenderMessage::deserialize);
+bridge_destroy!(UnidentifiedSenderMessage, ffi = None);
+bridge_deserialize!(UnidentifiedSenderMessage::deserialize, ffi = None);
