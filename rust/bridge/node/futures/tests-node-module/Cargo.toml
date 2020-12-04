@@ -3,22 +3,23 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 #
 
+# This is a separate crate so we can run the Neon build script.
+
 [package]
-name = "libsignal-node"
+name = "signal-neon-futures-tests"
 version = "0.1.0"
-authors = ["Jordan Rose <jrose@signal.org>", "Jack Lloyd <jack@signal.org>"]
+authors = ["Jordan Rose <jrose@signal.org>"]
 license = "AGPL-3.0-only"
+build = "build.rs"
 edition = "2018"
 
 [lib]
-name = "signal_node"
 crate-type = ["cdylib"]
 
 [build-dependencies]
-neon-build = "0.5.0"
+neon-build = "0.5.3"
 
 [dependencies]
-libsignal-protocol-rust = { path = "../../protocol" }
-signal-neon-futures = { path = "futures" }
+signal-neon-futures = { path = ".." }
 neon = { version = "0.5.3", default-features = false, features = ["napi-runtime"] }
-rand = "0.7.3"
+futures = "0.3.7"

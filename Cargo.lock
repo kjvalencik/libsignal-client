@@ -890,6 +890,7 @@ dependencies = [
  "neon",
  "neon-build",
  "rand",
+ "signal-neon-futures",
 ]
 
 [[package]]
@@ -1576,6 +1577,25 @@ name = "shlex"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7fdf1b9db47230893d76faad238fd6097fd6d6a9245cd7a4d90dbd639536bbd2"
+
+[[package]]
+name = "signal-neon-futures"
+version = "0.1.0"
+dependencies = [
+ "futures",
+ "neon",
+ "signal-neon-futures-tests",
+]
+
+[[package]]
+name = "signal-neon-futures-tests"
+version = "0.1.0"
+dependencies = [
+ "futures",
+ "neon",
+ "neon-build",
+ "signal-neon-futures",
+]
 
 [[package]]
 name = "slab"
